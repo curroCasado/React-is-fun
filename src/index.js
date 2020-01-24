@@ -8,28 +8,31 @@ let snowBoardData = {
   goal: 100
 };
 
-class SnowBoardCounter extends Component {
-  state = {};
-  render() {
-    const { total, powder, backcountry, goal } = this.props;
-    return (
-      <section>
-        <div>
-          <p>Total Days: {total}</p>
-        </div>
-        <div>
-          <p>Powder Days: {powder}</p>
-        </div>
-        <div>
-          <p>Backcountry Days: {backcountry}</p>
-        </div>
-        <div>
-          <p>Goal: {goal}</p>
-        </div>
-      </section>
-    );
-  }
-}
+const getPercent = decimal => {
+  return decimal * 100 + "%";
+};
+const calcGoalProgress = (total, goal) => {
+  return getPercent(total / goal);
+};
+
+const SnowBoardCounter = ({ total, powder, backcountry, goal }) => {
+  return (
+    <section>
+      <div>
+        <p>Total Days: {total}</p>
+      </div>
+      <div>
+        <p>Powder Days: {powder}</p>
+      </div>
+      <div>
+        <p>Backcountry Days: {backcountry}</p>
+      </div>
+      <div>
+        <p>Goal Progress: {calcGoalProgress(total, goal)}</p>
+      </div>
+    </section>
+  );
+};
 
 render(
   <SnowBoardCounter
