@@ -1,18 +1,42 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
-class Message extends React.Component {
+let snowBoardData = {
+  total: 50,
+  powder: 20,
+  backcountry: 10,
+  goal: 100
+};
+
+class SnowBoardCounter extends Component {
+  state = {};
   render() {
+    const { total, powder, backcountry, goal } = this.props;
     return (
-      <div>
-        <h1 style={{ color: this.props.color }}>{this.props.msg}</h1>
-        <p>I'll check back in {this.props.minutes} minutes</p>
-      </div>
+      <section>
+        <div>
+          <p>Total Days: {total}</p>
+        </div>
+        <div>
+          <p>Powder Days: {powder}</p>
+        </div>
+        <div>
+          <p>Backcountry Days: {backcountry}</p>
+        </div>
+        <div>
+          <p>Goal: {goal}</p>
+        </div>
+      </section>
     );
   }
 }
 
-ReactDOM.render(
-  <Message color="blue" msg="How are you?" minutes={5} />,
+render(
+  <SnowBoardCounter
+    total={snowBoardData.total}
+    powder={snowBoardData.powder}
+    backcountry={snowBoardData.backcountry}
+    goal={snowBoardData.goal}
+  />,
   document.getElementById("root")
 );
