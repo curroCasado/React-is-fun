@@ -1,45 +1,36 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 
-let snowBoardData = {
-  total: 50,
-  powder: 20,
-  backcountry: 10,
-  goal: 100
-};
-
-const getPercent = decimal => {
-  return decimal * 100 + "%";
-};
-const calcGoalProgress = (total, goal) => {
-  return getPercent(total / goal);
-};
-
-const SnowBoardCounter = ({ total, powder, backcountry, goal }) => {
+const Book = ({ title, author, pages }) => {
   return (
     <section>
-      <div>
-        <p>Total Days: {total}</p>
-      </div>
-      <div>
-        <p>Powder Days: {powder}</p>
-      </div>
-      <div>
-        <p>Backcountry Days: {backcountry}</p>
-      </div>
-      <div>
-        <p>Goal Progress: {calcGoalProgress(total, goal)}</p>
-      </div>
+      <h2>{title}</h2>
+      <p>by: {author}</p>
+      <p>Pages: {pages} pages</p>
     </section>
   );
 };
 
-render(
-  <SnowBoardCounter
-    total={snowBoardData.total}
-    powder={snowBoardData.powder}
-    backcountry={snowBoardData.backcountry}
-    goal={snowBoardData.goal}
-  />,
-  document.getElementById("root")
-);
+const Library = () => {
+  return (
+    <div>
+      <Book
+        title="The Lord of the Rings"
+        author="J. R. R. Tolkien"
+        pages={1595}
+      />
+      <Book
+        title="Harry Potter and the Philosopher stone"
+        author="J. K. Rowling"
+        pages={300}
+      />
+      <Book
+        title="Harry Potter and Prisioner of Azkaban"
+        author="J. K. Rowling"
+        pages={293}
+      />
+    </div>
+  );
+};
+
+render(<Library />, document.getElementById("root"));
