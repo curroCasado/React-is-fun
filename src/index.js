@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import PropsTypes from "prop-types";
 
 let bookList = [
   { title: "The Lord of the Rings", author: "J. R. R. Tolkien", pages: 1595 },
@@ -121,5 +122,14 @@ class Library extends Component {
     );
   }
 }
+
+//Set a type value that helps in the debugging
+Library.propTypes = { books: PropsTypes.array };
+Book.propTypes = {
+  title: PropsTypes.string,
+  author: PropsTypes.string,
+  pages: PropsTypes.number,
+  freeBookmark: PropsTypes.bool
+};
 
 render(<Library books={bookList} />, document.getElementById("root"));
